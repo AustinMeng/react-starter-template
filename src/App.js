@@ -13,6 +13,9 @@ function App() {
   const {gLoginId} = useContext(GlobalContext);
   const [globalLoginId, setGlobalLoginId] = gLoginId;
 
+  const {gLoginFlg} = useContext(GlobalContext);
+  const [globalLoginFlg, setGlobalLoginFlg] = gLoginFlg;
+
   function approve() {
     console.log("approve button is clicked");
   }
@@ -45,9 +48,17 @@ function App() {
       <Greeting></Greeting>
       <Counter ></Counter>
       <Login ></Login> */}
-      <Link to="/login">Login</Link>&nbsp;
-      <Link to="/counter/5">Counter</Link>&nbsp;
-      <Link to="/greeting">Greeting</Link>&nbsp;
+      {
+        globalLoginFlg?
+          <div>
+              <Link to="/counter/5">Counter</Link>&nbsp;
+              <Link to="/greeting">Greeting</Link>&nbsp;
+          </div>
+          :
+          <div>
+              <Link to="/login">Login</Link>&nbsp;
+          </div>   
+      }
       <Route exact path="/" component={Login} />
       <Route path="/login" component={Login} />
       <Route path="/counter/:id?" component={Counter} />

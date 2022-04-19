@@ -5,6 +5,9 @@ function Login(){
     const {gLoginId} = useContext(GlobalContext);
     const [globalLoginId, setGlobalLoginId] = gLoginId;
 
+    const {gLoginFlg} = useContext(GlobalContext);
+    const [globalLoginFlg, setGlobalLoginFlg] = gLoginFlg;
+
     const [loginForm, setLoginForm] = useState({});
     // loginForm = {loginId:"jchen", password:"abc123"}
     // loginForm = {loginId:"jchen"}
@@ -22,6 +25,7 @@ function Login(){
         console.log(loginForm);
 
         setGlobalLoginId(loginForm.loginId);
+        setGlobalLoginFlg(true);
     }
     return (
         <div>
