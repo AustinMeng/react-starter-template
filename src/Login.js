@@ -1,6 +1,10 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import {GlobalContext} from "./GlobalContext"
 
 function Login(){
+    const {gLoginId} = useContext(GlobalContext);
+    const [globalLoginId, setGlobalLoginId] = gLoginId;
+
     const [loginForm, setLoginForm] = useState({});
     // loginForm = {loginId:"jchen", password:"abc123"}
     // loginForm = {loginId:"jchen"}
@@ -16,6 +20,8 @@ function Login(){
     function handleSubmit(e){
         e.preventDefault(); //prevent form refreshing the page
         console.log(loginForm);
+
+        setGlobalLoginId(loginForm.loginId);
     }
     return (
         <div>
