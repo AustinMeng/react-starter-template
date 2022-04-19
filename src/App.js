@@ -6,6 +6,7 @@ import FButton from "./FButton";
 import Greeting from "./Greeting";
 import Counter from "./Counter";
 import Login from "./Login";
+import Users from "./Users"
 import { Route, Link } from "react-router-dom";
 import {GlobalContext} from "./GlobalContext";
 
@@ -53,16 +54,27 @@ function App() {
           <div>
               <Link to="/counter/5">Counter</Link>&nbsp;
               <Link to="/greeting">Greeting</Link>&nbsp;
+              <Link to="/users">Users</Link>
           </div>
           :
           <div>
               <Link to="/login">Login</Link>&nbsp;
           </div>   
       }
-      <Route exact path="/" component={Login} />
-      <Route path="/login" component={Login} />
-      <Route path="/counter/:id?" component={Counter} />
-      <Route path="/greeting" component={Greeting} />
+      {
+        globalLoginFlg?
+          <div>
+            <Route exact path="/" component={Greeting} />
+            <Route path="/counter/:id?" component={Counter} />
+            <Route path="/greeting" component={Greeting} />
+            <Route path="/users" component={Users} />
+          </div>
+          :
+          <div>
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+          </div>   
+      }
     </div>
   );
 }
